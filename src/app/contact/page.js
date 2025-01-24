@@ -1,9 +1,26 @@
 // components/Contact.js
-"use client"
+"use client";
+
+import { useRef } from "react";
 
 const Contact = () => {
+  const name = useRef();
+  const number = useRef();
+  const email = useRef();
+  const message = useRef();
   const handleClick = (event) => {
-    event.preventDefault(); // Prevent the default button action (e.g., form submission)
+    event.preventDefault(); 
+  
+    console.log(name.current.value);
+    console.log(number.current.value);
+    console.log(email.current.value);
+    console.log(message.current.value);
+    const sendNumber = 919584841008
+    const url = `https://wa.me/${sendNumber}?text=${"Name" + name, "Number"+ number,"Email"+email,"Message"+message}`
+
+    window.open(url,`_blank`).focus()
+    // const url = "https://api.whatsapp.com/send/?phone=919584841008&text&type=phone_number&app_absent=0"
+    
   };
   return (
     <section class="  pt-20 text-black :bg-slate-800" id="contact">
@@ -25,8 +42,8 @@ const Contact = () => {
           <div class="grid md:grid-cols-2">
             <div class="h-full pr-6">
               <p class="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
-                At Sanmati Plastic, we offer comprehensive services that focus on
-                recycling plastic waste and producing valuable products. Our
+                At Sanmati Plastic, we offer comprehensive services that focus
+                on recycling plastic waste and producing valuable products. Our
                 innovative solutions contribute to a more sustainable future
                 while helping businesses reduce their environmental impact.
               </p>
@@ -132,6 +149,7 @@ const Contact = () => {
                         class="pb-1 text-xs uppercase tracking-wider"
                       ></label>
                       <input
+                        ref={name}
                         type="text"
                         id="name"
                         autocomplete="given-name"
@@ -142,10 +160,26 @@ const Contact = () => {
                     </div>
                     <div class="mx-0 mb-1 sm:mb-4">
                       <label
+                        for="number"
+                        class="pb-1 text-xs uppercase tracking-wider"
+                      ></label>
+                      <input
+                        ref={number}
+                        type="number"
+                        id="number"
+                        autocomplete="email"
+                        placeholder="919425... Your Mobile Number "
+                        class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                        name="number"
+                      />
+                    </div>
+                    <div class="mx-0 mb-1 sm:mb-4">
+                      <label
                         for="email"
                         class="pb-1 text-xs uppercase tracking-wider"
                       ></label>
                       <input
+                        ref={email}
                         type="email"
                         id="email"
                         autocomplete="email"
@@ -161,6 +195,7 @@ const Contact = () => {
                       class="pb-1 text-xs uppercase tracking-wider"
                     ></label>
                     <textarea
+                      ref={message}
                       id="textarea"
                       name="textarea"
                       cols="30"
@@ -172,7 +207,7 @@ const Contact = () => {
                 </div>
                 <div class="text-center">
                   <button
-                  onSubmit={(e) => handleClick(e)}
+                    onSubmit={(e) => handleClick(e)}
                     type="submit"
                     class="w-full bg-[#C39D63] text-white px-6 py-3 font-xl rounded-md sm:mb-0"
                   >
