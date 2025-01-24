@@ -4,23 +4,43 @@
 import { useRef } from "react";
 
 const Contact = () => {
-  const name = useRef();
-  const number = useRef();
-  const email = useRef();
-  const message = useRef();
-  const handleClick = (event) => {
-    event.preventDefault(); 
-  
-    console.log(name.current.value);
-    console.log(number.current.value);
-    console.log(email.current.value);
-    console.log(message.current.value);
-    const sendNumber = 919584841008
-    const url = `https://wa.me/${sendNumber}?text=${"Name" + name, "Number"+ number,"Email"+email,"Message"+message}`
+  const name = useRef("");
+  const number = useRef("");
+  const email = useRef("");
+  const message = useRef("");
 
-    window.open(url,`_blank`).focus()
-    // const url = "https://api.whatsapp.com/send/?phone=919584841008&text&type=phone_number&app_absent=0"
-    
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    console.log(name.current.value, "ddd");
+    // console.log(number.current.value);
+    // console.log(email.current.value);
+    // console.log(message.current.value);
+    const sendNumber = 919584841008;
+
+    if (
+      !name.current.value &&
+      !number.current.value &&
+      !email.current.value &&
+      !message.current.value
+    ) {
+      alert("Form Not submitted check all the field");
+      return null;
+    } else {
+      const url = `https://wa.me/${sendNumber}?text=${
+        ("Name" + name.current.value,
+        "Number" + number.current.value,
+        "Email" + email.current.value,
+        "Message" + message.current.value)
+      }`;
+      window.open(url, `_blank`).focus();
+
+      name.current.value = null;
+      number.current.value = null;
+      email.current.value = null;
+      message.current.value = null;
+      alert("Form submitted successfully!");
+    }
   };
   return (
     <section class="  pt-20 text-black :bg-slate-800" id="contact">
