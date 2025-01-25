@@ -20,14 +20,19 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="bg-white">
           {children}
-          <div className=" w-14 md:w-16 bottom-10 md:bottom-16 sticky hover:opacity-60 left-5 md:left-10" >
-            
-            <Link target="_blank" href={"https://api.whatsapp.com/send/?phone=919584841008&text&type=phone_number&app_absent=0"}> <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png"
-              alt=""
-            /></Link>
-           
-            
+          <div className=" w-14 md:w-16 bottom-10 md:bottom-16 sticky hover:opacity-60 left-5 md:left-10">
+            <Link
+              target="_blank"
+              href={
+                "https://api.whatsapp.com/send/?phone=919584841008&text&type=phone_number&app_absent=0"
+              }
+            >
+              {" "}
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png"
+                alt=""
+              />
+            </Link>
           </div>
         </main>
 
