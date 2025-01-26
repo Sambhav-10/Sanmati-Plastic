@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png"
                 alt=""
+                className=" animate-bounce"
               />
             </Link>
           </div>
